@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://microxu.github.io/images/lladro/12.jpg">
 <meta property="og:image" content="https://microxu.github.io/images/lladro/13.jpg">
 <meta property="article:published_time" content="2024-08-26T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-01T02:49:30.591Z">
+<meta property="article:modified_time" content="2024-09-01T03:10:37.082Z">
 <meta property="article:author" content="Frank Xu">
 <meta property="article:tag" content="Lladró">
 <meta property="article:tag" content="Chinese Porcelain">
@@ -215,7 +215,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-09-01 14:49:30" itemprop="dateModified" datetime="2024-09-01T14:49:30+12:00">2024-09-01</time>
+      <time title="Modified: 2024-09-01 15:10:37" itemprop="dateModified" datetime="2024-09-01T15:10:37+12:00">2024-09-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -267,23 +267,49 @@
 
 <div style="display: flex; align-items: center;">
   <div style="width: 20%; padding-right: 10px;">
-    <img src="/images/lladro/small-list/thumb3.jpg" onclick="document.getElementById('mainImage').src='/images/lladro/3.jpg'" style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;">  
-    <img src="/images/lladro/small-list/thumb5.jpg" onclick="document.getElementById('mainImage').src='/images/lladro/5.jpg'" style="width: 100%; cursor: pointer;">
-    <img src="/images/lladro/small-list/thumb11.jpg" onclick="document.getElementById('mainImage').src='/images/lladro/11.jpg'" style="width: 100%; cursor: pointer;">  
-    <img src="/images/lladro/small-list/thumb1.jpg" onclick="document.getElementById('mainImage').src='/images/lladro/1.jpg'" style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;">
+    <img src="/images/lladro/small-list/thumb3.jpg" onclick="document.getElementById('mainImage').src='/images/lladro/3.jpg'" style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;margin-bottom: 5px;">  
+    <img src="/images/lladro/small-list/thumb5.jpg" onclick="document.getElementById('mainImage').src='/images/lladro/5.jpg'" style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;margin-bottom: 5px;">
+    <img src="/images/lladro/small-list/thumb11.jpg" onclick="document.getElementById('mainImage').src='/images/lladro/11.jpg'" style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;margin-bottom: 5px;">  
+    <img src="/images/lladro/small-list/thumb1.jpg" onclick="document.getElementById('mainImage').src='/images/lladro/1.jpg'" style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;margin-bottom: 5px;">
     <img src="/images/lladro/small-list/thumb4.jpg" onclick="document.getElementById('mainImage').src='/images/lladro/4.jpg'" style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;">      
   </div>
 
   <!-- 分隔线 -->
-  <div style="width: 1px; background-color: #ccc; height: 100%;"></div>
+  <div style="width: 1px; background-color: #ccc; min-height: 50vh;"></div>
 
   <!-- 右边的大图展示区域，使用flex来使其居中对齐 -->
   <div style="width: 79%; padding-left: 10px; display: flex; align-items: center;">
-    <img id="mainImage" src="/images/lladro/3.jpg" style="width: 100%;">
+    <img id="mainImage" src="/images/lladro/3.jpg" style="width: 100%;" onclick="openFullscreen(this)">
   </div>
 </div>
 
+<script>
+function openFullscreen(img) {
+    const fullscreenDiv = document.createElement('div');
+    fullscreenDiv.style.position = 'fixed';
+    fullscreenDiv.style.top = 0;
+    fullscreenDiv.style.left = 0;
+    fullscreenDiv.style.width = '100%';
+    fullscreenDiv.style.height = '100%';
+    fullscreenDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+    fullscreenDiv.style.display = 'flex';
+    fullscreenDiv.style.alignItems = 'center';
+    fullscreenDiv.style.justifyContent = 'center';
+    fullscreenDiv.style.cursor = 'pointer';
 
+    const fullscreenImg = document.createElement('img');
+    fullscreenImg.src = img.src;
+    fullscreenImg.style.maxWidth = '90%';
+    fullscreenImg.style.maxHeight = '90%';
+
+    fullscreenDiv.onclick = function() {
+        document.body.removeChild(fullscreenDiv);
+    }
+
+    fullscreenDiv.appendChild(fullscreenImg);
+    document.body.appendChild(fullscreenDiv);
+}
+</script>
 
 <h2 id="Chinese-Porcelain"><a href="#Chinese-Porcelain" class="headerlink" title="Chinese Porcelain"></a>Chinese Porcelain</h2><p>没有沉醉于中国瓷器太长时间，很快就知难而退了。总结有如下几点原因：</p>
 <ol>
