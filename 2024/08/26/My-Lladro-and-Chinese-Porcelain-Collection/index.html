@@ -48,10 +48,10 @@
 <meta property="og:image" content="https://microxu.github.io/images/lladro/1408-5.jpg">
 <meta property="og:image" content="https://microxu.github.io/images/lladro/1408-6.jpg">
 <meta property="og:image" content="https://microxu.github.io/images/lladro/1408-4.jpg">
-<meta property="og:image" content="https://microxu.github.io/images/lladro/1406-1.jpg">
-<meta property="og:image" content="https://microxu.github.io/images/lladro/1406-2.jpg">
-<meta property="og:image" content="https://microxu.github.io/images/lladro/1406-3.jpg">
-<meta property="og:image" content="https://microxu.github.io/images/lladro/1406-4.jpg">
+<meta property="og:image" content="https://microxu.github.io/images/lladro/small-list/thumb1406-1.jpg">
+<meta property="og:image" content="https://microxu.github.io/images/lladro/small-list/thumb1406-2.jpg">
+<meta property="og:image" content="https://microxu.github.io/images/lladro/small-list/thumb1406-3.jpg">
+<meta property="og:image" content="https://microxu.github.io/images/lladro/small-list/thumb1406-4.jpg">
 <meta property="og:image" content="https://microxu.github.io/images/lladro/1406-1.jpg">
 <meta property="og:image" content="https://microxu.github.io/images/lladro/1410-1.jpg">
 <meta property="og:image" content="https://microxu.github.io/images/lladro/1410-2.jpg">
@@ -59,7 +59,7 @@
 <meta property="og:image" content="https://microxu.github.io/images/lladro/1410-4.jpg">
 <meta property="og:image" content="https://microxu.github.io/images/lladro/1410-1.jpg">
 <meta property="article:published_time" content="2024-08-26T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-04T03:13:19.347Z">
+<meta property="article:modified_time" content="2024-09-04T03:45:12.554Z">
 <meta property="article:author" content="Frank Xu">
 <meta property="article:tag" content="Lladró">
 <meta property="article:tag" content="Chinese Porcelain">
@@ -234,7 +234,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-09-04 15:13:19" itemprop="dateModified" datetime="2024-09-04T15:13:19+12:00">2024-09-04</time>
+      <time title="Modified: 2024-09-04 15:45:12" itemprop="dateModified" datetime="2024-09-04T15:45:12+12:00">2024-09-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -284,19 +284,19 @@
 <div style="display: flex; align-items: flex-start;">
   <div id="thumbnailContainer" style="width: 20%; padding-right: 10px; overflow-y: auto; border-right: 1px solid #ccc;">
     <img src="/images/lladro/small-list/thumb3.jpg" 
-         onclick="setMainImage('/images/lladro/3.jpg', '/images/lladro/4k/3-4k.jpg', 'Click to view the 4K image')" 
+         onclick="setMainImage('thumbnailContainer', 'mainImage', '/images/lladro/3.jpg', '/images/lladro/4k/3-4k.jpg', 'Click to view the 4K image')" 
          style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;margin-bottom: 5px;">  
     <img src="/images/lladro/small-list/thumb5.jpg" 
-         onclick="setMainImage('/images/lladro/5.jpg', '/images/lladro/4k/5-4k.jpg', 'Click to view the 4K image')" 
+         onclick="setMainImage('thumbnailContainer', 'mainImage','/images/lladro/5.jpg', '/images/lladro/4k/5-4k.jpg', 'Click to view the 4K image')" 
          style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;margin-bottom: 5px;">
     <img src="/images/lladro/small-list/thumb11.jpg" 
-         onclick="setMainImage('/images/lladro/11.jpg', '/images/lladro/4k/11-4k.jpg', 'Click to view the 4K image')" 
+         onclick="setMainImage('thumbnailContainer', 'mainImage','/images/lladro/11.jpg', '/images/lladro/4k/11-4k.jpg', 'Click to view the 4K image')" 
          style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;margin-bottom: 5px;">  
     <img src="/images/lladro/small-list/thumb1.jpg" 
-         onclick="setMainImage('/images/lladro/1.jpg', '', 'full screen')" 
+         onclick="setMainImage('thumbnailContainer', 'mainImage','/images/lladro/1.jpg', '', 'Click to view in full screen')" 
          style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;margin-bottom: 5px;">
     <img src="/images/lladro/small-list/thumb4.jpg" 
-         onclick="setMainImage('/images/lladro/4.jpg', '', 'full screen')" 
+         onclick="setMainImage('thumbnailContainer', 'mainImage','/images/lladro/4.jpg', '', 'Click to view in full screen')" 
          style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;">      
   </div>
 
@@ -306,25 +306,32 @@
 </div>
 
 <script>
-  function setMainImage(src, hdSrc, title) {
-    var mainImage = document.getElementById('mainImage');
+  function setMainImage(thumbnailContainer, mainImage, src, hdSrc, title) {
+    var mainImage = document.getElementById(mainImage);
     mainImage.src = src;
     mainImage.setAttribute('data-hd-src', hdSrc);
     mainImage.setAttribute('title', title);
     
-    adjustThumbnailHeight();
+    adjustThumbnailHeight(thumbnailContainer, mainImage);
   }
 
-  function adjustThumbnailHeight() {
-    var mainImage = document.getElementById('mainImage');
-    var thumbnailContainer = document.getElementById('thumbnailContainer');
+  function adjustThumbnailHeight(thumbnailContainer, mainImage) {
+    var mainImage = document.getElementById(mainImage);
+    var thumbnailContainer = document.getElementById(thumbnailContainer);
     
     thumbnailContainer.style.maxHeight = mainImage.clientHeight + 'px';
   }
 
-  // Initial adjustment after loading the page
-  window.onload = adjustThumbnailHeight;
-  window.onresize = adjustThumbnailHeight; // Adjust on window resize
+  window.onload = function() {
+    adjustThumbnailHeight('thumbnailContainer', 'mainImage');
+    adjustThumbnailHeight('thumbLLadroContainer', 'largeImageContainer-1406');
+  };
+
+  // Adjust on window resize for both sets
+  window.onresize = function() {
+    adjustThumbnailHeight('thumbnailContainer', 'mainImage');
+    adjustThumbnailHeight('thumbLLadroContainer', 'largeImageContainer-1406');
+  };
 </script>
 
 
@@ -402,22 +409,22 @@ function openFullscreen(img) {
 <p><img src="/images/lladro/13.jpg" alt="sheepherd"></p>
 <h2 id="Lladro-Limited-Edition-figurines-based-on-Norman-Rockwell-paintings"><a href="#Lladro-Limited-Edition-figurines-based-on-Norman-Rockwell-paintings" class="headerlink" title="Lladró Limited Edition figurines based on Norman Rockwell paintings"></a>Lladró Limited Edition figurines based on Norman Rockwell paintings</h2><h3 id="1-1408-Practice-Makes-Perfect-1982-1984"><a href="#1-1408-Practice-Makes-Perfect-1982-1984" class="headerlink" title="1. 1408 Practice Makes Perfect (1982-1984)"></a>1. 1408 Practice Makes Perfect (1982-1984)</h3><div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-bottom: 20px; border-bottom: 2px solid #ccc; padding-bottom: 10px;">
   <img src="/images/lladro/small-list/thumb1408-4.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
-  onclick="document.getElementById('largeImage').src='/images/lladro/1408-4.jpg'; document.getElementById('largeImage').setAttribute('data-hd-src', ''); document.getElementById('largeImage').setAttribute('title', 'full screen')">
+  onclick="document.getElementById('largeImage').src='/images/lladro/1408-4.jpg'; document.getElementById('largeImage').setAttribute('data-hd-src', ''); document.getElementById('largeImage').setAttribute('title', 'Click to view in full screen')">
   <img src="/images/lladro/small-list/thumb1408-3.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
-  onclick="document.getElementById('largeImage').src='/images/lladro/1408-3.jpg'; document.getElementById('largeImage').setAttribute('data-hd-src', ''); document.getElementById('largeImage').setAttribute('title', 'full screen')">
+  onclick="document.getElementById('largeImage').src='/images/lladro/1408-3.jpg'; document.getElementById('largeImage').setAttribute('data-hd-src', ''); document.getElementById('largeImage').setAttribute('title', 'Click to view in full screen')">
   <img src="/images/lladro/small-list/thumb1408-1.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
-  onclick="document.getElementById('largeImage').src='/images/lladro/1408-1.jpg'; document.getElementById('largeImage').setAttribute('data-hd-src', ''); document.getElementById('largeImage').setAttribute('title', 'full screen')">
+  onclick="document.getElementById('largeImage').src='/images/lladro/1408-1.jpg'; document.getElementById('largeImage').setAttribute('data-hd-src', ''); document.getElementById('largeImage').setAttribute('title', 'Click to view in full screen')">
   <img src="/images/lladro/small-list/thumb1408-2.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
-  onclick="document.getElementById('largeImage').src='/images/lladro/1408-2.jpg'; document.getElementById('largeImage').setAttribute('data-hd-src', ''); document.getElementById('largeImage').setAttribute('title', 'full screen')">
+  onclick="document.getElementById('largeImage').src='/images/lladro/1408-2.jpg'; document.getElementById('largeImage').setAttribute('data-hd-src', ''); document.getElementById('largeImage').setAttribute('title', 'Click to view in full screen')">
   <img src="/images/lladro/small-list/thumb1408-5.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
   onclick="document.getElementById('largeImage').src='/images/lladro/1408-5.jpg'; document.getElementById('largeImage').setAttribute('data-hd-src', '/images/lladro/4k/1408-5-4k.jpg'); document.getElementById('largeImage').setAttribute('title', 'Click to view the 4K image')">
   <img src="/images/lladro/small-list/thumb1408-6.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
-  onclick="document.getElementById('largeImage').src='/images/lladro/1408-6.jpg'; document.getElementById('largeImage').setAttribute('data-hd-src', ''); document.getElementById('mainIlargeImagemage').setAttribute('title', 'full screen')">
+  onclick="document.getElementById('largeImage').src='/images/lladro/1408-6.jpg'; document.getElementById('largeImage').setAttribute('data-hd-src', ''); document.getElementById('mainIlargeImagemage').setAttribute('title', 'Click to view in full screen')">
 </div>
 
 <div id="largeImageContainer" style="text-align: center; margin-top: 20px;">
   <img id="largeImage" src="/images/lladro/1408-4.jpg" style="max-width: 100%; height: auto; border: 2px solid #ccc;"
-  data-hd-src="" style="width: 100%; border: 2px solid #ccc;" onclick="openFullscreen(this)" title="full screen">
+  data-hd-src="" style="width: 100%; border: 2px solid #ccc;" onclick="openFullscreen(this)" title="Click to view in full screen">
 </div>
 
 <style>
@@ -443,36 +450,41 @@ function openFullscreen(img) {
   }
 </style>
 
-<h3 id="2-1406-Love-Letter-1982-1984"><a href="#2-1406-Love-Letter-1982-1984" class="headerlink" title="2. 1406 Love Letter (1982-1984)"></a>2. 1406 Love Letter (1982-1984)</h3><div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-bottom: 20px; border-bottom: 2px solid #ccc; padding-bottom: 10px;">
-  <img src="/images/lladro/small-list/thumb1406-1.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
-  onclick="document.getElementById('LG-1406').src='/images/lladro/1406-1.jpg'; document.getElementById('LG-1406').setAttribute('data-hd-src', ''); document.getElementById('LG-1406').setAttribute('title', 'full screen')">
-  <img src="/images/lladro/small-list/thumb1406-2.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
-  onclick="document.getElementById('LG-1406').src='/images/lladro/1406-2.jpg'; document.getElementById('LG-1406').setAttribute('data-hd-src', ''); document.getElementById('LG-1406').setAttribute('title', 'full screen')">
-  <img src="/images/lladro/small-list/thumb1406-3.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
-  onclick="document.getElementById('LG-1406').src='/images/lladro/1406-3.jpg'; document.getElementById('LG-1406').setAttribute('data-hd-src', ''); document.getElementById('LG-1406').setAttribute('title', 'full screen')">
-  <img src="/images/lladro/small-list/thumb1406-4.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
-  onclick="document.getElementById('LG-1406').src='/images/lladro/1406-4.jpg'; document.getElementById('LG-1406').setAttribute('data-hd-src', ''); document.getElementById('LG-1406').setAttribute('title', 'full screen')">
-</div>
+<h3 id="2-1406-Love-Letter-1982-1984"><a href="#2-1406-Love-Letter-1982-1984" class="headerlink" title="2. 1406 Love Letter (1982-1984)"></a>2. 1406 Love Letter (1982-1984)</h3><div style="display: flex; align-items: flex-start;">
+  <div id="thumbLLadroContainer" style="width: 20%; padding-right: 10px; overflow-y: auto; border-right: 1px solid #ccc;">
+    <img src="/images/lladro/small-list/thumb1406-1.jpg" 
+         onclick="setMainImage('thumbLLadroContainer', 'largeImageContainer-1406','/images/lladro/1406-1.jpg', '', 'Click to view in full screen')" 
+         style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;margin-bottom: 5px;">  
+    <img src="/images/lladro/small-list/thumb1406-2.jpg" 
+         onclick="setMainImage('thumbLLadroContainer', 'largeImageContainer-1406','/images/lladro/1406-2.jpg', '', 'Click to view in full screen')" 
+         style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;margin-bottom: 5px;">
+    <img src="/images/lladro/small-list/thumb1406-3.jpg" 
+         onclick="setMainImage('thumbLLadroContainer', 'largeImageContainer-1406','/images/lladro/1406-3.jpg', '', 'Click to view in full screen')" 
+         style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;margin-bottom: 5px;">  
+    <img src="/images/lladro/small-list/thumb1406-4.jpg" 
+         onclick="setMainImage('thumbLLadroContainer', 'largeImageContainer-1406','/images/lladro/1406-4.jpg', '', 'Click to view in full screen')" 
+         style="width: 100%; cursor: pointer; border-bottom: 1px solid #ccc; padding-bottom: 5px;margin-bottom: 5px;">    
+  </div>
 
-<div id="largeImageContainer-1406" style="text-align: center; margin-top: 20px;">
-  <img id="LG-1406" src="/images/lladro/1406-1.jpg" style="max-width: 100%; height: auto; border: 2px solid #ccc;"
-  data-hd-src="" style="width: 100%; border: 2px solid #ccc;" onclick="openFullscreen(this)" title="full screen">
+  <div style="width: 79%; padding-left: 10px; display: flex; align-items: center;">
+    <img id="largeImageContainer-1406" src="/images/lladro/1406-1.jpg" data-hd-src="" style="width: 100%; border: 2px solid #ccc;" onclick="openFullscreen(this)" title="Click to view in full screen">
+  </div>
 </div>
 
 <h3 id="3-1410-Spring-Time-‘27-1982-1984"><a href="#3-1410-Spring-Time-‘27-1982-1984" class="headerlink" title="3. 1410 Spring Time ‘27 (1982-1984)"></a>3. 1410 Spring Time ‘27 (1982-1984)</h3><div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-bottom: 20px; border-bottom: 2px solid #ccc; padding-bottom: 10px;">
   <img src="/images/lladro/small-list/thumb1410-1.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
-  onclick="document.getElementById('LG-1410').src='/images/lladro/1410-1.jpg'; document.getElementById('LG-1410').setAttribute('data-hd-src', ''); document.getElementById('LG-1410').setAttribute('title', 'full screen')">
+  onclick="document.getElementById('LG-1410').src='/images/lladro/1410-1.jpg'; document.getElementById('LG-1410').setAttribute('data-hd-src', ''); document.getElementById('LG-1410').setAttribute('title', 'Click to view in full screen')">
   <img src="/images/lladro/small-list/thumb1410-2.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
-  onclick="document.getElementById('LG-1410').src='/images/lladro/1410-2.jpg'; document.getElementById('LG-1410').setAttribute('data-hd-src', ''); document.getElementById('LG-1410').setAttribute('title', 'full screen')">
+  onclick="document.getElementById('LG-1410').src='/images/lladro/1410-2.jpg'; document.getElementById('LG-1410').setAttribute('data-hd-src', ''); document.getElementById('LG-1410').setAttribute('title', 'Click to view in full screen')">
   <img src="/images/lladro/small-list/thumb1410-3.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
-  onclick="document.getElementById('LG-1410').src='/images/lladro/1410-3.jpg'; document.getElementById('LG-1410').setAttribute('data-hd-src', ''); document.getElementById('LG-1410').setAttribute('title', 'full screen')">
+  onclick="document.getElementById('LG-1410').src='/images/lladro/1410-3.jpg'; document.getElementById('LG-1410').setAttribute('data-hd-src', ''); document.getElementById('LG-1410').setAttribute('title', 'Click to view in full screen')">
   <img src="/images/lladro/small-list/thumb1410-4.jpg" style="width: 100px; margin-bottom: 10px; cursor: pointer; border: 2px solid #ccc;" 
-  onclick="document.getElementById('LG-1410').src='/images/lladro/1410-4.jpg'; document.getElementById('LG-1410').setAttribute('data-hd-src', ''); document.getElementById('LG-1410').setAttribute('title', 'full screen')">
+  onclick="document.getElementById('LG-1410').src='/images/lladro/1410-4.jpg'; document.getElementById('LG-1410').setAttribute('data-hd-src', ''); document.getElementById('LG-1410').setAttribute('title', 'Click to view in full screen')">
 </div>
 
 <div id="largeImageContainer-1410" style="text-align: center; margin-top: 20px;">
   <img id="LG-1410" src="/images/lladro/1410-1.jpg" style="max-width: 100%; height: auto; border: 2px solid #ccc;"
-  data-hd-src="" style="width: 100%; border: 2px solid #ccc;" onclick="openFullscreen(this)" title="full screen">
+  data-hd-src="" style="width: 100%; border: 2px solid #ccc;" onclick="openFullscreen(this)" title="Click to view in full screenn">
 </div>
 
 
