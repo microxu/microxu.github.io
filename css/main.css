@@ -1233,7 +1233,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #40eb8c;
+  background: #ba53a3;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -1289,29 +1289,6 @@ pre code {
 }
 .cc-license img {
   display: inline-block;
-}
-.daily-thoughts {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #f9f9f9; /* 设置背景颜色 */
-  border-radius: 5px;
-}
-.daily-thoughts-title {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #333;
-}
-.daily-thoughts-item {
-  margin-bottom: 10px; /* 控制每条动态之间的间距 */
-  line-height: 1.5; /* 设置行距 */
-}
-.daily-thoughts-date {
-  font-weight: bold; /* 让日期加粗，突出显示 */
-  margin-right: 5px; /* 日期和内容之间的间距 */
-}
-.daily-thoughts-content {
-  font-size: 0.9em; /* 调整内容字体大小 */
 }
 .site-author-image {
   border: 2px solid #333;
