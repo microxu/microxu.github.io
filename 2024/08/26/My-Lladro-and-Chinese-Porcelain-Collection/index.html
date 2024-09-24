@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://microxu.github.io/images/lladro/LLadro-1801-2.jpg">
 <meta property="og:image" content="https://microxu.github.io/images/lladro/LLadro-1801-1.jpg">
 <meta property="article:published_time" content="2024-08-26T00:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-23T23:01:05.310Z">
+<meta property="article:modified_time" content="2024-09-24T05:05:02.701Z">
 <meta property="article:author" content="Frank Xu">
 <meta property="article:tag" content="Lladró">
 <meta property="article:tag" content="Chinese Porcelain">
@@ -290,7 +290,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-09-24 11:01:05" itemprop="dateModified" datetime="2024-09-24T11:01:05+12:00">2024-09-24</time>
+      <time title="Modified: 2024-09-24 17:05:02" itemprop="dateModified" datetime="2024-09-24T17:05:02+12:00">2024-09-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -394,45 +394,8 @@
     adjustThumbnailHeight('thumbLLadroContainer', 'largeImageContainer-1406');
   };
 
-function openFullscreen(input) {
-    const fullscreenDiv = document.createElement('div');
-    fullscreenDiv.style.position = 'fixed';
-    fullscreenDiv.style.top = 0;
-    fullscreenDiv.style.left = 0;
-    fullscreenDiv.style.width = '100%';
-    fullscreenDiv.style.height = '100%';
-    fullscreenDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-    fullscreenDiv.style.display = 'flex';
-    fullscreenDiv.style.alignItems = 'center';
-    fullscreenDiv.style.justifyContent = 'center';
-    fullscreenDiv.style.cursor = 'pointer';
 
-    const fullscreenImg = document.createElement('img');
 
-    let hdSrc = '';
-    let imgSrc = '';
-
-    if (typeof input === 'string') {
-        imgSrc = input;
-    } else if (input instanceof HTMLImageElement) {
-        hdSrc = input.getAttribute('data-hd-src');
-        imgSrc = hdSrc && hdSrc.trim() !== '' ? hdSrc : input.src;
-    } else {
-        console.error("Invalid input: expected an image element or image src.");
-        return;
-    }
-
-    fullscreenImg.src = imgSrc;
-    fullscreenImg.style.maxWidth = '90%';
-    fullscreenImg.style.maxHeight = '90%';
-
-    fullscreenDiv.onclick = function() {
-        document.body.removeChild(fullscreenDiv);
-    }
-
-    fullscreenDiv.appendChild(fullscreenImg);
-    document.body.appendChild(fullscreenDiv);
-}
 </script>
 
 <h2 id="Chinese-Porcelain"><a href="#Chinese-Porcelain" class="headerlink" title="Chinese Porcelain"></a>Chinese Porcelain</h2><p>没有沉醉于中国瓷器太长时间，很快就知难而退了。总结有如下几点原因：</p>
@@ -461,12 +424,12 @@ function openFullscreen(input) {
 <p>上面都是我收集的三隆款瓷器，也就是诗词的落款，不是说底款（底款一般都是乾隆年制寄托款，而在当时，落这种寄托款的是只销往海外的，所以国内收藏一般只能通过回流的方式获得）。“三隆”有人说是景德镇游隆盛、游隆昌和游隆顺三位大家的作品，也有人说“三”是八卦里面“乾”字的简写，也是乾隆皇帝在自己的诗词下喜欢落的款式（二钤印），所以可以理解成寄托款。我比较支持后者，在50年代和解放初期，很多民国时期的景德镇手艺人齐聚一起，为新中国出口创汇群策群力，而落三隆款的要比落“世宁”款的要更精美一些，更有升值潜力。</p>
 </blockquote>
 <p align="center" style="display: flex; justify-content: space-between; align-items: flex-end;">
-  <img src="/images/lladro/9-1.jpg" alt="erqiao 1" style="max-width: 45%; height: auto; border: 2px solid #ccc;" data-hd-src="/images/lladro/4k/9-1-4k.jpg" onclick="openFullscreen2(this)" title="Click to view the 4K image"/>
-  <img src="/images/lladro/9-2.jpg" alt="erqiao 2" style="max-width: 45%; height: auto; border: 2px solid #ccc;" data-hd-src="/images/lladro/4k/9-2-4k.jpg" onclick="openFullscreen2(this)" title="Click to view the 4K image"/>
+  <img src="/images/lladro/9-1.jpg" alt="erqiao 1" style="max-width: 45%; height: auto; border: 2px solid #ccc;" data-hd-src="/images/lladro/4k/9-1-4k.jpg" onclick="openFullscreen(this)" title="Click to view the 4K image"/>
+  <img src="/images/lladro/9-2.jpg" alt="erqiao 2" style="max-width: 45%; height: auto; border: 2px solid #ccc;" data-hd-src="/images/lladro/4k/9-2-4k.jpg" onclick="openFullscreen(this)" title="Click to view the 4K image"/>
 </p>
 
 <script>
-function openFullscreen2(input) {
+function openFullscreen(input) {
     const fullscreenDiv = document.createElement('div');
     fullscreenDiv.style.position = 'fixed';
     fullscreenDiv.style.top = 0;
@@ -500,9 +463,15 @@ function openFullscreen2(input) {
     // 设置图片的源
     fullscreenImg.src = imgSrc;
 
-    // 添加逐步显示的 CSS 动画
-    fullscreenImg.style.animation = "revealFromTop 1.5s ease-out forwards";
-    fullscreenImg.style.clipPath = "inset(100% 0 0 0)"; // 初始状态为完全隐藏
+    const randomValue = Math.floor(Math.random() * 2);
+
+    if (randomValue === 0) {
+        fullscreenImg.style.animation = "revealFromBottom 1.5s ease-out forwards";
+        fullscreenImg.style.clipPath = "inset(100% 0 0 0)"; // 从下到上
+    } else {
+        fullscreenImg.style.animation = "revealFromTop 1.5s ease-out forwards";
+        fullscreenImg.style.clipPath = "inset(0 0 100% 0)"; // 从上到下
+    }
 
     // 点击全屏图片关闭全屏
     fullscreenDiv.onclick = function() {
@@ -519,10 +488,18 @@ var style = document.createElement('style');
 style.innerHTML = `
 @keyframes revealFromTop {
     from {
-        clip-path: inset(100% 0 0 0);
+        clip-path: inset(0 0 100% 0); /* 从上到下 */
     }
     to {
-        clip-path: inset(0 0 0 0);
+        clip-path: inset(0 0 0 0); /* 全部显示 */
+    }
+}
+@keyframes revealFromBottom {
+    from {
+        clip-path: inset(100% 0 0 0); /* 从下到上 */
+    }
+    to {
+        clip-path: inset(0 0 0 0); /* 全部显示 */
     }
 }
 `;
@@ -543,19 +520,19 @@ document.head.appendChild(style);
 </tr>
 </thead>
 <tbody><tr>
-<td><img src="/images/lladro/table-list/small/LLadro-1033.jpg" style="width: 100px; cursor: pointer;" onclick="openFullscreen2('/images/lladro/12.jpg')" /></td>
+<td><img src="/images/lladro/table-list/small/LLadro-1033.jpg" style="width: 100px; cursor: pointer;" onclick="openFullscreen('/images/lladro/12.jpg')" /></td>
 <td>01001033<br><strong>Old Folks</strong><br><em>1969-1985</em><br>Original box: No</td>
 <td>Length: 18cm<br>Width: 11cm<br>Height: 50cm</td>
 <td>$1590</td>
 </tr>
 <tr>
-<td><img src="/images/lladro/table-list/small/LLadro-4945.jpg" style="width: 100px; cursor: pointer;" onclick="openFullscreen2('/images/lladro/1.jpg')" /></td>
+<td><img src="/images/lladro/table-list/small/LLadro-4945.jpg" style="width: 100px; cursor: pointer;" onclick="openFullscreen('/images/lladro/1.jpg')" /></td>
 <td>01014945<br><strong>Bison</strong><br><em>1976-1978</em><br>Original box: No</td>
 <td>Length: 30cm<br>Width: 10.5cm<br>Height: 20.5cm</td>
 <td>$2830</td>
 </tr>
 <tr>
-<td><img src="/images/lladro/table-list/small/LLadro-5396.jpg" style="width: 100px; cursor: pointer;" onclick="openFullscreen2('/images/lladro/table-list/big/LLadro-4668.jpg')" /></td>
+<td><img src="/images/lladro/table-list/small/LLadro-5396.jpg" style="width: 100px; cursor: pointer;" onclick="openFullscreen('/images/lladro/table-list/big/LLadro-4668.jpg')" /></td>
 <td>01005396<br><strong>The Puppet Painter</strong><br><em>1986-2005</em><br>Original box: Yes</td>
 <td>Length: 21cm<br>Width: 17cm<br>Height: 23cm</td>
 <td>$850</td>
@@ -839,8 +816,8 @@ document.head.appendChild(style);
 <p>Limited Edition 1949&#x2F;2500. Issued in 1994 and discontinued in 1995. </p>
 </blockquote>
 <p align="center" style="display: flex; justify-content: space-between; align-items: flex-end;">
-  <img src="/images/lladro/LLadro-1801-2.jpg" alt="erqiao 1" style="max-width: 45%; height: auto; border: 2px solid #ccc;" data-hd-src="/images/lladro/LLadro-1801-2.jpg" onclick="openFullscreen2(this)" title="Click to view the full image"/>
-  <img src="/images/lladro/LLadro-1801-1.jpg" alt="erqiao 2" style="max-width: 45%; height: auto; border: 2px solid #ccc;" data-hd-src="/images/lladro/LLadro-1801-1.jpg" onclick="openFullscreen2(this)" title="Click to view the full image"/>
+  <img src="/images/lladro/LLadro-1801-2.jpg" alt="erqiao 1" style="max-width: 45%; height: auto; border: 2px solid #ccc;" data-hd-src="/images/lladro/LLadro-1801-2.jpg" onclick="openFullscreen(this)" title="Click to view the full image"/>
+  <img src="/images/lladro/LLadro-1801-1.jpg" alt="erqiao 2" style="max-width: 45%; height: auto; border: 2px solid #ccc;" data-hd-src="/images/lladro/LLadro-1801-1.jpg" onclick="openFullscreen(this)" title="Click to view the full image"/>
 </p>
 
 
