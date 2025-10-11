@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"microxu.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="零刻me mini Ubuntu系统, Kingston NV3 M.2 NVMe SSD 安装黑群晖，洗白，并配置外网访问教程.">
+    <meta name="description" content="零刻 Me mini Ubuntu系统, Kingston NV3 M.2 NVMe SSD 安装黑群晖，洗白，并配置外网访问教程.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="零刻me mini安装黑群晖+洗白+外网击穿（Ipv4）">
+<meta property="og:title" content="零刻 Me mini安装黑群晖+洗白+内网穿透">
 <meta property="og:url" content="https://microxu.github.io/2025/10/11/%E9%9B%B6%E5%88%BBme-mini%E5%AE%89%E8%A3%85%E9%BB%91%E7%BE%A4%E6%99%96-%E6%B4%97%E7%99%BD-%E5%A4%96%E7%BD%91%E5%87%BB%E7%A9%BF/index.html">
 <meta property="og:site_name" content="泛彼柏舟">
-<meta property="og:description" content="零刻me mini Ubuntu系统, Kingston NV3 M.2 NVMe SSD 安装黑群晖，洗白，并配置外网访问教程.">
+<meta property="og:description" content="零刻 Me mini Ubuntu系统, Kingston NV3 M.2 NVMe SSD 安装黑群晖，洗白，并配置外网访问教程.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://microxu.github.io/images/nas/%E6%8F%92%E4%BB%B6%E9%80%89%E6%8B%A9.png">
 <meta property="og:image" content="https://microxu.github.io/images/nas/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91.png">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://microxu.github.io/images/nas/%E8%AF%81%E4%B9%A6.png">
 <meta property="og:image" content="https://microxu.github.io/images/nas/portforwarding.png">
 <meta property="article:published_time" content="2025-10-10T21:22:03.000Z">
-<meta property="article:modified_time" content="2025-10-11T00:26:15.675Z">
+<meta property="article:modified_time" content="2025-10-11T02:32:42.141Z">
 <meta property="article:author" content="Frank Xu">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://microxu.github.io/images/nas/%E6%8F%92%E4%BB%B6%E9%80%89%E6%8B%A9.png">
@@ -43,10 +43,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://microxu.github.io/2025/10/11/%E9%9B%B6%E5%88%BBme-mini%E5%AE%89%E8%A3%85%E9%BB%91%E7%BE%A4%E6%99%96-%E6%B4%97%E7%99%BD-%E5%A4%96%E7%BD%91%E5%87%BB%E7%A9%BF/","path":"2025/10/11/零刻me-mini安装黑群晖-洗白-外网击穿/","title":"零刻me mini安装黑群晖+洗白+外网击穿（Ipv4）"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://microxu.github.io/2025/10/11/%E9%9B%B6%E5%88%BBme-mini%E5%AE%89%E8%A3%85%E9%BB%91%E7%BE%A4%E6%99%96-%E6%B4%97%E7%99%BD-%E5%A4%96%E7%BD%91%E5%87%BB%E7%A9%BF/","path":"2025/10/11/零刻me-mini安装黑群晖-洗白-外网击穿/","title":"零刻 Me mini安装黑群晖+洗白+内网穿透"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>零刻me mini安装黑群晖+洗白+外网击穿（Ipv4） | 泛彼柏舟</title><meta name="robots" content="noindex">
+<title>零刻 Me mini安装黑群晖+洗白+内网穿透 | 泛彼柏舟</title><meta name="robots" content="noindex">
   
 
 
@@ -118,7 +118,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E9%BB%91%E7%BE%A4%E6%99%96%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">1. 安装黑群晖：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%85%B3%E4%BA%8E%E6%B4%97%E7%99%BD%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">2. 关于洗白：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%B3%E4%BA%8E%E5%A4%96%E7%BD%91%E5%87%BB%E7%A9%BF"><span class="nav-number">3.</span> <span class="nav-text">3. 关于外网击穿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">4. 如何使用域名访问：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%A6%82%E4%BD%95%E7%BB%99%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7%E5%85%8D%E8%B4%B9HTTPS%E8%AF%81%E4%B9%A6%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%9C%A8%E8%AE%BF%E9%97%AE%E7%9A%84%E6%97%B6%E5%80%99%E5%B0%B1%E6%B2%A1%E6%9C%89%E2%80%9C%E4%B8%8D%E5%AE%89%E5%85%A8%E8%BF%9E%E6%8E%A5%E2%80%9D%E5%B0%8F%E9%94%81%F0%9F%94%92%E4%BA%86%E3%80%82"><span class="nav-number">5.</span> <span class="nav-text">5. 如何给域名申请免费HTTPS证书，这样在访问的时候就没有“不安全连接”小锁🔒了。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AEDSM-%E5%92%8C-Synology-photo%E5%AD%90%E8%B7%AF%E5%BE%84%EF%BC%8C%E8%80%8C%E4%B8%8D%E8%BE%93%E5%85%A5%E7%AB%AF%E5%8F%A3%E5%8F%B7%EF%BC%88%E6%AF%94%E5%A6%82%EF%BC%9Ahttps-frankxu-duckdns-org-photo-https-frankxu-duckdns-org%EF%BC%89%EF%BC%9A"><span class="nav-number">6.</span> <span class="nav-text">6. 如何使用域名访问DSM 和 Synology photo子路径，而不输入端口号（比如：https:&#x2F;&#x2F;frankxu.duckdns.org&#x2F;photo  https:&#x2F;&#x2F;frankxu.duckdns.org）：</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E9%BB%91%E7%BE%A4%E6%99%96%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">1. 安装黑群晖：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%85%B3%E4%BA%8E%E6%B4%97%E7%99%BD%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">2. 关于洗白：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%B3%E4%BA%8E%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F"><span class="nav-number">3.</span> <span class="nav-text">3. 关于内网穿透</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">4. 如何使用域名访问：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%A6%82%E4%BD%95%E7%BB%99%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7%E5%85%8D%E8%B4%B9HTTPS%E8%AF%81%E4%B9%A6%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%9C%A8%E8%AE%BF%E9%97%AE%E7%9A%84%E6%97%B6%E5%80%99%E5%B0%B1%E6%B2%A1%E6%9C%89%E2%80%9C%E4%B8%8D%E5%AE%89%E5%85%A8%E8%BF%9E%E6%8E%A5%E2%80%9D%E5%B0%8F%E9%94%81%F0%9F%94%92%E4%BA%86%E3%80%82"><span class="nav-number">5.</span> <span class="nav-text">5. 如何给域名申请免费HTTPS证书，这样在访问的时候就没有“不安全连接”小锁🔒了。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AEDSM-%E5%92%8C-Synology-photo%E5%AD%90%E8%B7%AF%E5%BE%84%EF%BC%8C%E8%80%8C%E4%B8%8D%E8%BE%93%E5%85%A5%E7%AB%AF%E5%8F%A3%E5%8F%B7%EF%BC%88%E6%AF%94%E5%A6%82%EF%BC%9Ahttps-frankxu-duckdns-org-photo-https-frankxu-duckdns-org%EF%BC%89%EF%BC%9A"><span class="nav-number">6.</span> <span class="nav-text">6. 如何使用域名访问DSM 和 Synology photo子路径，而不输入端口号（比如：https:&#x2F;&#x2F;frankxu.duckdns.org&#x2F;photo  https:&#x2F;&#x2F;frankxu.duckdns.org）：</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -207,12 +207,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="零刻me mini安装黑群晖+洗白+外网击穿（Ipv4） | 泛彼柏舟">
-      <meta itemprop="description" content="零刻me mini Ubuntu系统, Kingston NV3 M.2 NVMe SSD 安装黑群晖，洗白，并配置外网访问教程.">
+      <meta itemprop="name" content="零刻 Me mini安装黑群晖+洗白+内网穿透 | 泛彼柏舟">
+      <meta itemprop="description" content="零刻 Me mini Ubuntu系统, Kingston NV3 M.2 NVMe SSD 安装黑群晖，洗白，并配置外网访问教程.">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          零刻me mini安装黑群晖+洗白+外网击穿（Ipv4）
+          零刻 Me mini安装黑群晖+洗白+内网穿透
         </h1>
 
         <div class="post-meta-container">
@@ -224,7 +224,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2025-10-11 10:22:03 / Modified: 13:26:15" itemprop="dateCreated datePublished" datetime="2025-10-11T10:22:03+13:00">2025-10-11</time>
+      <time title="Created: 2025-10-11 10:22:03 / Modified: 15:32:42" itemprop="dateCreated datePublished" datetime="2025-10-11T10:22:03+13:00">2025-10-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -232,14 +232,14 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">tech</span></a>
+          <a href="/categories/Tech/" itemprop="url" rel="index"><span itemprop="name">Tech</span></a>
         </span>
     </span>
 
   
 </div>
 
-            <div class="post-description">零刻me mini Ubuntu系统, Kingston NV3 M.2 NVMe SSD 安装黑群晖，洗白，并配置外网访问教程.</div>
+            <div class="post-description">零刻 Me mini Ubuntu系统, Kingston NV3 M.2 NVMe SSD 安装黑群晖，洗白，并配置外网访问教程.</div>
         </div>
       </header>
 
@@ -297,7 +297,8 @@
 </li>
 </ul>
 <p><em>从这之后，就你的零刻me mini nas 就可以不用接显示器和键盘了，用电脑登陆群晖管理页面就可以了</em></p>
-<h2 id="3-关于外网击穿"><a href="#3-关于外网击穿" class="headerlink" title="3. 关于外网击穿"></a>3. 关于外网击穿</h2><ul>
+<h2 id="3-关于内网穿透"><a href="#3-关于内网穿透" class="headerlink" title="3. 关于内网穿透"></a>3. 关于内网穿透</h2><p>所谓内网穿透，也就是让外部（互联网）能够访问到位于内网中的服务或设备的一种技术手段。</p>
+<ul>
 <li><p>访问 <a target="_blank" rel="noopener" href="https://test-ipv6.com/">https://test-ipv6.com</a> 来看看是有ipv6 还是 ipv4，我只有公网ipv4</p>
 </li>
 <li><p>在路由器设置端口转发，也就是DSM 5001 的端口请求转发到memini(192.168.1.29)的5001 处理<br>我用的Orbi路由器：</p>
@@ -371,7 +372,10 @@
 <td>TCP</td>
 </tr>
 </tbody></table>
-<h2 id="6-如何使用域名访问DSM-和-Synology-photo子路径，而不输入端口号（比如：https-frankxu-duckdns-org-photo-https-frankxu-duckdns-org）："><a href="#6-如何使用域名访问DSM-和-Synology-photo子路径，而不输入端口号（比如：https-frankxu-duckdns-org-photo-https-frankxu-duckdns-org）：" class="headerlink" title="6. 如何使用域名访问DSM 和 Synology photo子路径，而不输入端口号（比如：https://frankxu.duckdns.org/photo  https://frankxu.duckdns.org）："></a>6. 如何使用域名访问DSM 和 Synology photo子路径，而不输入端口号（比如：<a target="_blank" rel="noopener" href="https://frankxu.duckdns.org/photo">https://frankxu.duckdns.org/photo</a>  <a href="https://frankxu.duckdns.org）：">https://frankxu.duckdns.org）：</a></h2><ol>
+<h2 id="6-如何使用域名访问DSM-和-Synology-photo子路径，而不输入端口号（比如：https-frankxu-duckdns-org-photo-https-frankxu-duckdns-org）："><a href="#6-如何使用域名访问DSM-和-Synology-photo子路径，而不输入端口号（比如：https-frankxu-duckdns-org-photo-https-frankxu-duckdns-org）：" class="headerlink" title="6. 如何使用域名访问DSM 和 Synology photo子路径，而不输入端口号（比如：https://frankxu.duckdns.org/photo  https://frankxu.duckdns.org）："></a>6. 如何使用域名访问DSM 和 Synology photo子路径，而不输入端口号（比如：<a target="_blank" rel="noopener" href="https://frankxu.duckdns.org/photo">https://frankxu.duckdns.org/photo</a>  <a href="https://frankxu.duckdns.org）：">https://frankxu.duckdns.org）：</a></h2><blockquote>
+<p>关于安装Synology photo 套件，并配置端口号就很简单了，不在这里赘述。</p>
+</blockquote>
+<ol>
 <li><p>在路由器增加 port forwarding：<br>443 的 端口转发，转发到 零刻 memini的内网ip<br><em><strong>删掉之前的5001的端口转发，因为我们不打算输入端口了。</strong></em><br><em><strong>如果之前配置了5443的photo端口转发，也要删掉了。</strong></em><br><em><strong>不需要配置Http端口的转发，如果我们只使用更安全的Https</strong></em></p>
 </li>
 <li><p>到这里你的路由器的转发规则大概是这样的 (22端口是SSH，可以不用， 80端口是证书， 443 是 免端口输入的转发）：<br><img src="/images/nas/portforwarding.png" alt="portforwarding"></p>
@@ -398,6 +402,7 @@
 </ul>
 <p>最后，你现在就能：<br>https:&#x2F;&#x2F;你的域名 → 应直接进入 DSM</p>
 <p>https:&#x2F;&#x2F;你的域名&#x2F;photo → Photos 正常</p>
+<p><strong>好了，现在跟白群晖没有区别，开始你的表演吧……</strong></p>
 
     </div>
 
