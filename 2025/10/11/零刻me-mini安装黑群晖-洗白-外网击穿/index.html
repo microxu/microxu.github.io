@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="google-site-verification" content="1CCQhbF7dz1KBfjFkZ64PprrxO_9l2E3YOzcFdFseq4">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7CNoto+Sans|Roboto|ZCOOL+QingKe+HuangYou:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"microxu.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="零刻me mini Ubuntu系统, Kingston NV3 M.2 NVMe SSD 安装黑群晖，洗白，并配置外网访问教程.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="零刻me mini安装黑群晖+洗白+外网击穿（Ipv4）">
+<meta property="og:url" content="https://microxu.github.io/2025/10/11/%E9%9B%B6%E5%88%BBme-mini%E5%AE%89%E8%A3%85%E9%BB%91%E7%BE%A4%E6%99%96-%E6%B4%97%E7%99%BD-%E5%A4%96%E7%BD%91%E5%87%BB%E7%A9%BF/index.html">
+<meta property="og:site_name" content="泛彼柏舟">
+<meta property="og:description" content="零刻me mini Ubuntu系统, Kingston NV3 M.2 NVMe SSD 安装黑群晖，洗白，并配置外网访问教程.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://microxu.github.io/images/nas/%E6%8F%92%E4%BB%B6%E9%80%89%E6%8B%A9.png">
+<meta property="og:image" content="https://microxu.github.io/images/nas/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91.png">
+<meta property="og:image" content="https://microxu.github.io/images/nas/duckdns.png">
+<meta property="og:image" content="https://microxu.github.io/images/nas/%E8%AF%81%E4%B9%A6.png">
+<meta property="og:image" content="https://microxu.github.io/images/nas/portforwarding.png">
+<meta property="article:published_time" content="2025-10-10T21:22:03.000Z">
+<meta property="article:modified_time" content="2025-10-11T00:26:15.675Z">
+<meta property="article:author" content="Frank Xu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://microxu.github.io/images/nas/%E6%8F%92%E4%BB%B6%E9%80%89%E6%8B%A9.png">
+
+
+<link rel="canonical" href="https://microxu.github.io/2025/10/11/%E9%9B%B6%E5%88%BBme-mini%E5%AE%89%E8%A3%85%E9%BB%91%E7%BE%A4%E6%99%96-%E6%B4%97%E7%99%BD-%E5%A4%96%E7%BD%91%E5%87%BB%E7%A9%BF/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://microxu.github.io/2025/10/11/%E9%9B%B6%E5%88%BBme-mini%E5%AE%89%E8%A3%85%E9%BB%91%E7%BE%A4%E6%99%96-%E6%B4%97%E7%99%BD-%E5%A4%96%E7%BD%91%E5%87%BB%E7%A9%BF/","path":"2025/10/11/零刻me-mini安装黑群晖-洗白-外网击穿/","title":"零刻me mini安装黑群晖+洗白+外网击穿（Ipv4）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>零刻me mini安装黑群晖+洗白+外网击穿（Ipv4） | 泛彼柏舟</title><meta name="robots" content="noindex">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">泛彼柏舟</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-gallery"><a href="/gallery/" rel="section"><i class="fas fa-images fa-fw"></i>gallery</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E9%BB%91%E7%BE%A4%E6%99%96%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">1. 安装黑群晖：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%85%B3%E4%BA%8E%E6%B4%97%E7%99%BD%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">2. 关于洗白：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%B3%E4%BA%8E%E5%A4%96%E7%BD%91%E5%87%BB%E7%A9%BF"><span class="nav-number">3.</span> <span class="nav-text">3. 关于外网击穿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">4. 如何使用域名访问：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%A6%82%E4%BD%95%E7%BB%99%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7%E5%85%8D%E8%B4%B9HTTPS%E8%AF%81%E4%B9%A6%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%9C%A8%E8%AE%BF%E9%97%AE%E7%9A%84%E6%97%B6%E5%80%99%E5%B0%B1%E6%B2%A1%E6%9C%89%E2%80%9C%E4%B8%8D%E5%AE%89%E5%85%A8%E8%BF%9E%E6%8E%A5%E2%80%9D%E5%B0%8F%E9%94%81%F0%9F%94%92%E4%BA%86%E3%80%82"><span class="nav-number">5.</span> <span class="nav-text">5. 如何给域名申请免费HTTPS证书，这样在访问的时候就没有“不安全连接”小锁🔒了。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AEDSM-%E5%92%8C-Synology-photo%E5%AD%90%E8%B7%AF%E5%BE%84%EF%BC%8C%E8%80%8C%E4%B8%8D%E8%BE%93%E5%85%A5%E7%AB%AF%E5%8F%A3%E5%8F%B7%EF%BC%88%E6%AF%94%E5%A6%82%EF%BC%9Ahttps-frankxu-duckdns-org-photo-https-frankxu-duckdns-org%EF%BC%89%EF%BC%9A"><span class="nav-number">6.</span> <span class="nav-text">6. 如何使用域名访问DSM 和 Synology photo子路径，而不输入端口号（比如：https:&#x2F;&#x2F;frankxu.duckdns.org&#x2F;photo  https:&#x2F;&#x2F;frankxu.duckdns.org）：</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Frank Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+          <h3 style="font-size: 1.2em; font-weight: bold; margin-bottom: 15px; color: #b0c8c7; font-family: 'Caveat', cursive;">随笔</h3>
+          <!-- 按日期从大到小排序 -->
+                  <div style="margin-bottom: 10px; line-height: 1.5; text-align: left; font-size: 0.8em;">
+                    <span style="font-style: italic; margin-right: 5px;">
+                      2024-09-09
+                    </span> :
+                    <span style="font-size: 0.9em; font-family: 'Lobster', cursive;">
+                      <p>未来有三个买买买计划：买个kayak；买个Toyota Hiace改成房车；去趟南极，当然不是开房车…</p>
+<!-- flag of hidden posts -->
+                    </span>
+                  </div>
+                  <div style="margin-bottom: 10px; line-height: 1.5; text-align: left; font-size: 0.8em;">
+                    <span style="font-style: italic; margin-right: 5px;">
+                      2024-09-08
+                    </span> :
+                    <span style="font-size: 0.9em; font-family: 'Lobster', cursive;">
+                      <p>看到0:7的比分，我一点也不奇怪，所有的果都跟认知匹配，5000年也没有文明，还是独裁国家，差距只会越来越大…</p>
+<!-- flag of hidden posts -->
+                    </span>
+                  </div>
+        </div>
+      </div>
+
+      <!-- <h3 style="font-size: 1.2em; font-weight: bold; margin-bottom: 15px; color: #b0c8c7; font-family: 'Caveat', cursive;">随笔</h3> -->
+
+
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://microxu.github.io/2025/10/11/%E9%9B%B6%E5%88%BBme-mini%E5%AE%89%E8%A3%85%E9%BB%91%E7%BE%A4%E6%99%96-%E6%B4%97%E7%99%BD-%E5%A4%96%E7%BD%91%E5%87%BB%E7%A9%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Frank Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泛彼柏舟">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="零刻me mini安装黑群晖+洗白+外网击穿（Ipv4） | 泛彼柏舟">
+      <meta itemprop="description" content="零刻me mini Ubuntu系统, Kingston NV3 M.2 NVMe SSD 安装黑群晖，洗白，并配置外网访问教程.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          零刻me mini安装黑群晖+洗白+外网击穿（Ipv4）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-10-11 10:22:03 / Modified: 13:26:15" itemprop="dateCreated datePublished" datetime="2025-10-11T10:22:03+13:00">2025-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">tech</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">零刻me mini Ubuntu系统, Kingston NV3 M.2 NVMe SSD 安装黑群晖，洗白，并配置外网访问教程.</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="1-安装黑群晖："><a href="#1-安装黑群晖：" class="headerlink" title="1. 安装黑群晖："></a>1. 安装黑群晖：</h2><ul>
+<li><p>安装好所有的SSD，我安装了6块 Kingston NV3 1TB M.2 NVMe Internal SSD</p>
+</li>
+<li><p>安装阶段要接个外接显示器，还需要接个键盘</p>
+</li>
+</ul>
+<blockquote>
+<p>Note:<br>如果你之前安装过很多次，并失败了，才看到这篇文章，需要先进memini的默认系统（我的Ubuntu系统），使用如下命令，把这些磁盘重新reset，来去除以前的安装残留。<br>进入Ubuntu系统的终端软件：</p>
+<ul>
+<li><ol>
+<li>停掉并删除旧的 md 阵列<br><code>mdadm --stop --scan</code><br><code>mdadm --zero-superblock /dev/nvme0n1 /dev/nvme1n1 /dev/nvme2n1 /dev/nvme3n1 /dev/nvme4n1 /dev/nvme5n1 2&gt;/dev/null</code></li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><ol start="2">
+<li>删除每块盘的分区表（仅 NVMe，不动 U 盘）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;for i in /dev/nvme[0-5]n1; do</span><br><span class="line"> echo &quot;Cleaning $i&quot;</span><br><span class="line"> dd if=/dev/zero of=$i bs=1M count=20</span><br><span class="line">&gt;done</span><br><span class="line">&gt;sync</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43331089/article/details/148173641">按照这个文档的内容</a> ,先做个启动盘，其它内容也可以顺便做参考</p>
+</blockquote>
+<ul>
+<li><p>然后插入启动盘</p>
+</li>
+<li><p>启动的时候按ESC 进Bios（启动的时候按F7可以选择启动盘）：<br><strong>在UEFI Hard Disk Drive BBS priorities中</strong><br>第一启动项设置成：UEFI OS (SanDisk Cruzer)<br>第二启动项：Ubuntu</p>
+</li>
+</ul>
+<ul>
+<li><p>me mini 我选择使用 SA6400 系统，安装是成功的</p>
+</li>
+<li><p>我的SSD 是 Kingston NV3 1TB M.2 NVMe Internal SSD ,所以需要额外选择如下插件：<br><img src="/images/nas/%E6%8F%92%E4%BB%B6%E9%80%89%E6%8B%A9.png" alt="插件选择"></p>
+</li>
+<li><p>对于零刻me mini，Advanced option 中需要检查如下三项的值是否是对应的值， 如果不是可以按回车修改：<br><em>LKM version: prod</em><br><em>Switch direct boot : true</em><br><em>Use EMMC as the system disk : false</em></p>
+</li>
+</ul>
+<p>其它按照上面的文档做就可以。</p>
+<h2 id="2-关于洗白："><a href="#2-关于洗白：" class="headerlink" title="2. 关于洗白："></a>2. 关于洗白：</h2><ul>
+<li><p>如果有淘宝买的洗白码（10元以内），可以这个时候选择Cmdline menu, 然后输入自己的SN和两个MAC，当然安装完成之后再去输入也行。</p>
+</li>
+<li><p>如果想让Advanced Media Extensions 套件支持AVC 和 VC1 解码，请看如下资源：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=yZYgjiPJmoA">洗白教程</a></p>
+</blockquote>
+</li>
+</ul>
+<p><em>从这之后，就你的零刻me mini nas 就可以不用接显示器和键盘了，用电脑登陆群晖管理页面就可以了</em></p>
+<h2 id="3-关于外网击穿"><a href="#3-关于外网击穿" class="headerlink" title="3. 关于外网击穿"></a>3. 关于外网击穿</h2><ul>
+<li><p>访问 <a target="_blank" rel="noopener" href="https://test-ipv6.com/">https://test-ipv6.com</a> 来看看是有ipv6 还是 ipv4，我只有公网ipv4</p>
+</li>
+<li><p>在路由器设置端口转发，也就是DSM 5001 的端口请求转发到memini(192.168.1.29)的5001 处理<br>我用的Orbi路由器：</p>
+</li>
+</ul>
+<ol>
+<li>访问 <a target="_blank" rel="noopener" href="http://192.168.1.1/">http://192.168.1.1</a> → Advanced → Advanced Setup → Port Forwarding&#x2F;Port Triggering → Add Custom Service</li>
+</ol>
+<p><img src="/images/nas/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91.png" alt="端口转发"></p>
+<p>这个时候会列出所有内部在线设备名让你选择，memini就是零刻nas。</p>
+<ol start="2">
+<li>添加规则：<br>Service Name: DSM<br>External Port: 5001<br>Internal IP: (你的 NAS 内网 IP，比如 192.168.1.29)<br>Internal Port: 5001<br>Protocol: TCP</li>
+</ol>
+<p>完成后，就可以用 https:&#x2F;&#x2F;&lt;你的公网IPv4&gt;:5001 来访问你的群晖登录页面了。</p>
+<h2 id="4-如何使用域名访问："><a href="#4-如何使用域名访问：" class="headerlink" title="4. 如何使用域名访问："></a>4. 如何使用域名访问：</h2><ol>
+<li><p>在DuckDNS中申请免费域名（如果没有）,复制保存自己的token到记事本之类<br><img src="/images/nas/duckdns.png" alt="duckdns"></p>
+</li>
+<li><p>打开 DSM → 控制面板 → 外部访问 → DDNS → 新增</p>
+</li>
+</ol>
+<p>服务商选择 custom</p>
+<p>输入：<br>服务提供商：: <a target="_blank" rel="noopener" href="http://www.duckdns.org/">www.duckdns.org</a><br>Query URL: <a target="_blank" rel="noopener" href="https://www.duckdns.org/update?domains=%E4%BD%A0%E7%9A%84%E5%9F%9F%E5%90%8D&token=%E4%BD%A0%E7%9A%84TOKEN&ip=__%E4%BD%A0%E7%9A%84%E5%85%AC%E7%BD%91IPv4">https://www.duckdns.org/update?domains=你的域名&amp;token=你的TOKEN&amp;ip=__你的公网IPv4</a>__<br>email 就是你注册duckdns 用的email<br>password 我就复制了token，好像无所谓<br>测试一下连接，应该是normal 就对了。</p>
+<ol start="3">
+<li>现在就可以用手机5G的情况下用域名访问了： <a target="_blank" rel="noopener" href="https://frankxu.duckdns.org:5001/">https://frankxu.duckdns.org:5001</a></li>
+</ol>
+<h2 id="5-如何给域名申请免费HTTPS证书，这样在访问的时候就没有“不安全连接”小锁🔒了。"><a href="#5-如何给域名申请免费HTTPS证书，这样在访问的时候就没有“不安全连接”小锁🔒了。" class="headerlink" title="5. 如何给域名申请免费HTTPS证书，这样在访问的时候就没有“不安全连接”小锁🔒了。"></a>5. 如何给域名申请免费HTTPS证书，这样在访问的时候就没有“不安全连接”小锁🔒了。</h2><ol>
+<li><p>打开 DSM → 控制面板 → 安全性 → 证书 (Security → Certificate)<br>选择“新增”<br>选择：Add a new certificate → Get a certificate from Let’s Encrypt</p>
+</li>
+<li><p>填写如下信息：</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>填写内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>域名 (Domain name)</td>
+<td>frankxu.duckdns.org</td>
+</tr>
+<tr>
+<td>邮箱 (Email)</td>
+<td>你的常用邮箱</td>
+</tr>
+<tr>
+<td>备用域名 (Subject Alternative Name)</td>
+<td>留空即可</td>
+</tr>
+</tbody></table>
+<p>点击应用(Apply),可能需要等一下，最后是这样的：<br><img src="/images/nas/%E8%AF%81%E4%B9%A6.png" alt="证书"></p>
+<ol start="3">
+<li>注意：端口 80（HTTP）在路由器上也要能访问 NAS，否则 Let’s Encrypt 无法验证域名所有权。<br>所以需要在无线路由器增加80端口的转发（我的memini的内网ip是：192.168.1.29)：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Service Name</th>
+<th>External Port</th>
+<th>Internal Port</th>
+<th>IP</th>
+<th>Protocol</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTTP</td>
+<td>80</td>
+<td>80</td>
+<td>192.168.1.29</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<h2 id="6-如何使用域名访问DSM-和-Synology-photo子路径，而不输入端口号（比如：https-frankxu-duckdns-org-photo-https-frankxu-duckdns-org）："><a href="#6-如何使用域名访问DSM-和-Synology-photo子路径，而不输入端口号（比如：https-frankxu-duckdns-org-photo-https-frankxu-duckdns-org）：" class="headerlink" title="6. 如何使用域名访问DSM 和 Synology photo子路径，而不输入端口号（比如：https://frankxu.duckdns.org/photo  https://frankxu.duckdns.org）："></a>6. 如何使用域名访问DSM 和 Synology photo子路径，而不输入端口号（比如：<a target="_blank" rel="noopener" href="https://frankxu.duckdns.org/photo">https://frankxu.duckdns.org/photo</a>  <a href="https://frankxu.duckdns.org）：">https://frankxu.duckdns.org）：</a></h2><ol>
+<li><p>在路由器增加 port forwarding：<br>443 的 端口转发，转发到 零刻 memini的内网ip<br><em><strong>删掉之前的5001的端口转发，因为我们不打算输入端口了。</strong></em><br><em><strong>如果之前配置了5443的photo端口转发，也要删掉了。</strong></em><br><em><strong>不需要配置Http端口的转发，如果我们只使用更安全的Https</strong></em></p>
+</li>
+<li><p>到这里你的路由器的转发规则大概是这样的 (22端口是SSH，可以不用， 80端口是证书， 443 是 免端口输入的转发）：<br><img src="/images/nas/portforwarding.png" alt="portforwarding"></p>
+</li>
+<li><p>ssh到你的memini nas修改nginx.conf</p>
+</li>
+</ol>
+<ul>
+<li><p>首先：<br><code>sudo -i</code></p>
+</li>
+<li><p>备份：<br><code>cp -a /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak.$(date +%F-%H%M%S)</code></p>
+</li>
+<li><p>编辑：<br><code>vi /etc/nginx/nginx.conf</code></p>
+</li>
+<li><p>找到&#x2F;listen 443 default_server ssl 也就是监听 443 的 server {}<br>在server里面，其他 location 之后，加入下面这一段（因为Synology Photos套件的端口我设置的是5443）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">location ^~ /photo &#123;</span><br><span class="line">    proxy_pass https://127.0.0.1:5443;</span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_read_timeout 300;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Host $host;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">    proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">    proxy_set_header Connection $connection_upgrade;</span><br><span class="line"></span><br><span class="line">    proxy_ssl_server_name on;</span><br><span class="line">    proxy_ssl_verify off;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将如下这段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    root /var/tmp/nginx/html;</span><br><span class="line">    add_header Cache-Control &#x27;no-cache&#x27;;</span><br><span class="line">    rewrite (.*) /redirect.html break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>替换成如下，因不能有两个location &#x2F; 配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">location = /redirect.html &#123;</span><br><span class="line">    root /var/tmp/nginx/html;</span><br><span class="line">    add_header Cache-Control &#x27;no-cache&#x27;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">    proxy_pass https://127.0.0.1:5001;</span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_read_timeout 300;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Host $host;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">    proxy_set_header Connection $connection_upgrade;</span><br><span class="line"></span><br><span class="line">    proxy_ssl_server_name on;</span><br><span class="line">    proxy_ssl_verify off;</span><br><span class="line"></span><br><span class="line">    proxy_redirect ~^https?://([^/]+):5001(/.*)$ https://$host$2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重启ngix<br><code>nginx -t &amp;&amp; nginx -s reload</code></li>
+</ul>
+<p>最后，你现在就能：<br>https:&#x2F;&#x2F;你的域名 → 应直接进入 DSM</p>
+<p>https:&#x2F;&#x2F;你的域名&#x2F;photo → Photos 正常</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/paypal8.png" alt="Frank Xu PayPal">
+        <span>PayPal</span>
+      </div>
+
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/02/10/The-south-island/" rel="prev" title="The south island">
+                  <i class="fa fa-angle-left"></i> The south island
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Frank Xu</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
